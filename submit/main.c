@@ -453,7 +453,6 @@ int eraseAVL(Node** T, int deleteKey) {
         if (q == NULL) *T = NULL;
         else if (q->left == p) q->left = NULL;
         else q->right = NULL;
-        free(p);
     }
     else {
         if (p->left != NULL) {
@@ -466,8 +465,9 @@ int eraseAVL(Node** T, int deleteKey) {
             else if (q->left == p) q->left = p->right;
             else q->right = p->right;
         }
-        free(p);
     }
+
+    free(p);
 
     if (t >= 0) {
         q = stack[t--];
